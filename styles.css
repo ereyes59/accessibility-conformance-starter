@@ -19,7 +19,7 @@ a {
 a:focus,
 button:focus,
 input:focus {
-  outline: none;
+  outline: 3px solid black;
 }
 
 .site-header {
@@ -150,6 +150,18 @@ td {
 
 
 /* Practice MANUAL ACCESSIBILITY AUDIT LAB
+
+I used WAVE as my automated testing tool seen there are 3 errors, 3 contrast errors, 6 alerts, 4 features, and 11 structural elements. This comes out to a AIM score of 6.3 out of 10. The 3 alerts being that there are 2 missing form labels and 1 empty button.
+
+ISSUE | EVIDENCE | IMPACT | PRIORITY | FIX | RETEST RESULT
+
+1. Visible Focus is not present and the CSS used outline:none on links, buttons, and form inputs | When I used the Tab key to navigate through the page, the focused moved through the page, but there was no visible indication of which element was selected. | Keyboard users may not know where they are on the page and what is being focused on. | HIGH priority | I removed the outline: none and added a visible :focus-visible outline. | I tested the page again using the Tab key and links, buttons, and inputs now have a visible focus indicator.
+2. Submit button is empty | The original index.HTML file contains <button type="submit
+></button>, so there is no text being displayed on the button itself for users | Users see a button shape for the form, but it is not clear what the button does or some users may not even recognize the form on the page due to the missing text on the button. Screen readers also have no useful button name to tell them what the button does. | HIGH priority | I added the text "SUBMIT" inside the button | The button now clearly tells users and screen readers the purpose of the button.
+3. The name field does not have a proper label | The name field uses <span>Name *</span> instead of a <label> connected to the input | Assistive technology may not be able to identify what information should be entered into the field making it unclear for users | HIGH priority | I changed the <span> to <label for="name">Name *</label>. | The name field now has a label connected to the input.
+4. The hero section jumps from a h1 heading to a h3 heading skipping on h2 | Inconsistent heading structure can make the organization of the page more difficult to understand for screen reader users. | MEDIUM priority | Not fixed for this exercise | No results since no fix has been made
+5. Horizontal scrolling is required to view all of the page's content | The header uses a min-width: 980px; and the main content uses width: 980px; | Users are required to scroll vertically and horizontally at the same time to view all of the content on the page making it harder for users on a smaller screen | HIGH priority | Not fixed for this exercise | No results since no fix has been made
+
 
 
 */
